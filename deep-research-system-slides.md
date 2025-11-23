@@ -2,66 +2,74 @@
 marp: true
 theme: default
 paginate: true
-header: 'Deep Research System Design'
 size: 16:9
 style: |
   section {
-    padding: 50px 60px 60px 60px;
-    font-size: 20px;
+    padding: 35px 45px 45px 45px;
+    font-size: 17px;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   }
   h1 {
-    font-size: 38px;
-    margin-bottom: 20px;
-    margin-top: 5px;
+    font-size: 32px;
+    margin-bottom: 15px;
+    margin-top: 0px;
     color: #1a237e;
     border-bottom: 2px solid #3949ab;
-    padding-bottom: 8px;
+    padding-bottom: 6px;
   }
   h2 {
-    font-size: 28px;
-    margin-top: 10px;
-    margin-bottom: 12px;
-    color: #283593;
-  }
-  h3 {
     font-size: 24px;
     margin-top: 8px;
     margin-bottom: 10px;
+    color: #283593;
+  }
+  h3 {
+    font-size: 20px;
+    margin-top: 6px;
+    margin-bottom: 8px;
     color: #3949ab;
   }
   ul, ol {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 3px;
+    margin-bottom: 3px;
   }
   li {
-    margin-bottom: 4px;
-    line-height: 1.3;
+    margin-bottom: 3px;
+    line-height: 1.25;
   }
   p {
-    margin-bottom: 8px;
-    line-height: 1.3;
+    margin-bottom: 6px;
+    line-height: 1.25;
   }
   strong {
     color: #1a237e;
   }
   code {
     background: #f5f5f5;
-    padding: 1px 4px;
+    padding: 1px 3px;
     border-radius: 2px;
-    font-size: 18px;
+    font-size: 15px;
   }
   table {
-    font-size: 18px;
-    margin: 5px 0;
+    font-size: 15px;
+    margin: 4px 0;
   }
   th, td {
-    padding: 4px 8px;
+    padding: 3px 6px;
   }
   pre {
-    font-size: 14px;
-    margin: 5px 0;
+    font-size: 12px;
+    margin: 4px 0;
     line-height: 1.2;
+  }
+  .columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    width: 100%;
+  }
+  .column {
+    padding: 0 5px;
   }
 ---
 
@@ -100,6 +108,10 @@ style: |
 
 ## 2. AI-Assisted Design Process
 
+<div class="columns">
+
+<div class="column">
+
 ### LLM Usage & Transparency
 
 **What We Used LLMs For:**
@@ -114,6 +126,10 @@ style: |
 
 2. *"Design a multi-stage evaluation framework for financial research systems using offline golden sets and online LLM-as-judge approaches"*
 
+</div>
+
+<div class="column">
+
 ### What LLM Got Wrong
 
 - ❌ **Over-simplification**: Missed importance of versioning and temporal reasoning
@@ -127,47 +143,82 @@ style: |
 - ❓ Critical questions for leadership
 - 🏢 Final architecture decisions requiring business context
 
+</div>
+
+</div>
+
 ---
 
 ## 3. System Architecture Overview
 
-### End-to-End Architecture Flow
+<div style="display: grid; grid-template-columns: 80px 1fr 80px; gap: 8px; height: 100%; align-items: stretch;">
 
-**📄 Document Ingestion** → **🔍 Processing & Extraction**
-- Framework Extraction, Entity/Relationship, Temporal Metadata
+<!-- Left Sidebar: Organizational Enablement Layer -->
+<div style="background: #7b1fa2; border-radius: 6px; padding: 15px 8px; color: white; font-weight: bold; font-size: 14px; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; text-orientation: mixed;">
+<div>⬇️ Organizational<br>Enablement Layer</div>
+</div>
 
-↓
+<!-- Main Architecture Layers -->
+<div style="display: flex; flex-direction: column; gap: 6px; justify-content: space-between;">
 
-**🕸️ Knowledge Graph Construction**
-- Entities & Relationships, Frameworks (Proprietary), Temporal Dimensions
+<!-- Layer 1: Application & Integration Layer (Blue) -->
+<div style="background: #e3f2fd; border: 2px solid #1976d2; border-radius: 6px; padding: 10px 15px; position: relative; display: flex; flex-direction: column; justify-content: center;">
+<div style="font-size: 18px; font-weight: bold; color: #1565c0; margin-bottom: 4px;">Application & Integration Layer</div>
+<div style="font-size: 14px; color: #424242; line-height: 1.3;">Require all applications to route feedback into a shared evaluation system, enabling longitudinal performance tracking.</div>
+<div style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #1976d2; font-size: 18px;">⌄</div>
+</div>
 
-↓
+<!-- Layer 2: Validation, Evaluation & Observability Layer (Orange) -->
+<div style="background: #fff3e0; border: 2px solid #f57c00; border-radius: 6px; padding: 10px 15px; position: relative; display: flex; flex-direction: column; justify-content: center;">
+<div style="font-size: 18px; font-weight: bold; color: #e65100; margin-bottom: 4px;">Validation, Evaluation & Observability Layer</div>
+<div style="font-size: 14px; color: #424242; line-height: 1.3;">This layer is non-optional for enterprises — all production agentic systems should log and evaluate their outputs systematically. Governance can mandate standardized evaluation harnesses, trace schemas, and model variance tracking across teams. This is the critical layer for measuring, validating, and tracing nondeterministic outputs — the backbone of responsible agentic AI governance.</div>
+<div style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #f57c00; font-size: 18px;">⌄</div>
+</div>
 
-**🔎 Hybrid Retrieval** (Semantic 50% + Graph 35% + Keyword 15%)
+<!-- Layer 3: System Capability Layer (Green) -->
+<div style="background: #e8f5e9; border: 2px solid #388e3c; border-radius: 6px; padding: 10px 15px; position: relative; display: flex; flex-direction: column; justify-content: center;">
+<div style="font-size: 18px; font-weight: bold; color: #2e7d32; margin-bottom: 4px;">System Capability Layer</div>
+<div style="font-size: 14px; color: #424242; line-height: 1.3;">Introduce agentic quality benchmarks and audit trails for tool use and intermediate agent reasoning.</div>
+<div style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #388e3c; font-size: 18px;">⌄</div>
+</div>
 
-↓
+<!-- Layer 4: Middleware & Cognitive Architecture Layer (Teal/Light Green) -->
+<div style="background: #e0f2f1; border: 2px solid #00897b; border-radius: 6px; padding: 10px 15px; position: relative; display: flex; flex-direction: column; justify-content: center;">
+<div style="font-size: 18px; font-weight: bold; color: #00695c; margin-bottom: 4px;">Middleware & Cognitive Architecture Layer</div>
+<div style="font-size: 14px; color: #424242; line-height: 1.3;">Require consistent traceability of agent decision paths and standardize frameworks for action logging and replayability.</div>
+<div style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #00897b; font-size: 18px;">⌄</div>
+</div>
 
-**🤖 Multi-Agent Query Processing**
-- Understanding → Decomposition → Retrieval → Synthesis → QA
+<!-- Layer 5: Foundation Model Layer (Purple) -->
+<div style="background: #f3e5f5; border: 2px solid #7b1fa2; border-radius: 6px; padding: 10px 15px; position: relative; display: flex; flex-direction: column; justify-content: center;">
+<div style="font-size: 18px; font-weight: bold; color: #6a1b9a; margin-bottom: 4px;">Foundation Model Layer</div>
+<div style="font-size: 14px; color: #424242; line-height: 1.3;">Define approved model providers, enforce consistent evaluation pipelines, and standardize prompt security and model selection policies.</div>
+<div style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #7b1fa2; font-size: 18px;">⌄</div>
+</div>
 
-↓
+<!-- Layer 6: Core Infrastructure Layer (Dark Gray/Slate) -->
+<div style="background: #eceff1; border: 2px solid #546e7a; border-radius: 6px; padding: 10px 15px; position: relative; display: flex; flex-direction: column; justify-content: center;">
+<div style="font-size: 18px; font-weight: bold; color: #455a64; margin-bottom: 4px;">Core Infrastructure Layer</div>
+<div style="font-size: 14px; color: #424242; line-height: 1.3;">Data quality, access control, lineage tracing, and compliance logging form the foundation for all AI governance downstream.</div>
+<div style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #546e7a; font-size: 18px;">⌄</div>
+</div>
 
-**✍️ Answer Generation & Context**
-- Framework-Aware, Citations & Sourcing
+</div>
 
-↓
+<!-- Right Sidebar: Governance, Risk & Compliance Layer -->
+<div style="background: #d32f2f; border-radius: 6px; padding: 15px 8px; color: white; font-weight: bold; font-size: 14px; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; text-orientation: mixed;">
+<div>⬇️ Governance, Risk<br>& Compliance Layer</div>
+</div>
 
-**✅ Quality Assurance & Guardrails**
-- Hallucination Detection, Fact Verification
-
-↓
-
-**📊 Evaluation & Monitoring**
-- Offline (Golden Set) + Online (LLM-as-Judge)
+</div>
 
 ---
 
 ## 4. Document Processing & Knowledge Extraction
+
+<div class="columns">
+
+<div class="column">
 
 ### Processing Pipeline
 
@@ -190,6 +241,10 @@ style: |
 - Map entities to KG nodes, create relationship edges
 - Attach framework metadata to relevant nodes
 
+</div>
+
+<div class="column">
+
 ### Quality Metrics
 
 | Metric | Target |
@@ -198,6 +253,10 @@ style: |
 | Framework Coverage | >85% |
 | Temporal Alignment | >95% |
 | Processing Time | <2 min/doc |
+
+</div>
+
+</div>
 
 ---
 
@@ -226,6 +285,10 @@ style: |
 
 ## 6. Context Engineering & Answer Generation
 
+<div class="columns">
+
+<div class="column">
+
 ### Context Structuring
 
 **Multi-Source Context:**
@@ -243,8 +306,16 @@ style: |
 - Maintain expert voice and terminology
 
 **Structured Output:**
-1. Executive Summary 2. Key Findings (with citations) 3. Framework Applied
-4. Supporting Evidence 5. Temporal Context 6. Confidence & Limitations
+1. Executive Summary
+2. Key Findings (with citations)
+3. Framework Applied
+4. Supporting Evidence
+5. Temporal Context
+6. Confidence & Limitations
+
+</div>
+
+<div class="column">
 
 ### Quality Metrics
 
@@ -255,6 +326,10 @@ style: |
 | Framework Adherence | >80% |
 | Expert Voice | >4.0/5.0 |
 | Confidence Calibration | >0.7 |
+
+</div>
+
+</div>
 
 ---
 
@@ -290,11 +365,20 @@ style: |
 
 ## 8. Quality Assurance & Hallucination Mitigation
 
+<div class="columns">
+
+<div class="column">
+
 ### Multi-Stage Guardrails
 
-**Stage 1: Pre-Generation** - Verify query answerable, check context retrieval
-**Stage 2: During Generation** - Grounding verification, framework consistency, temporal consistency
-**Stage 3: Post-Generation** - Fact extraction & KG verification, citation accuracy, confidence calibration
+**Stage 1: Pre-Generation**
+- Verify query answerable, check context retrieval
+
+**Stage 2: During Generation**
+- Grounding verification, framework consistency, temporal consistency
+
+**Stage 3: Post-Generation**
+- Fact extraction & KG verification, citation accuracy, confidence calibration
 
 ### Hallucination Detection Strategies
 
@@ -303,9 +387,14 @@ style: |
 **3. Consistency Analysis** - Compare with retrieved documents, detect contradictions
 **4. Self-Evaluation** - LLM self-assessment, uncertainty expression, refusal when low confidence
 
+</div>
+
+<div class="column">
+
 ### Golden Dataset & Metrics
 
-**Training & Evaluation:** Fine-tune on golden Q&A pairs, learn patterns, calibrate thresholds
+**Training & Evaluation:**
+- Fine-tune on golden Q&A pairs, learn patterns, calibrate thresholds
 
 | Metric | Target |
 |--------|--------|
@@ -314,13 +403,24 @@ style: |
 | Citation Accuracy | >98% |
 | Verification Coverage | >90% |
 
+</div>
+
+</div>
+
 ---
 
 ## 9. Evaluation Framework
 
+<div class="columns">
+
+<div class="column">
+
 ### Offline Evaluation (Golden Set)
 
-**Dataset Split:** Training 2,000 (80%) + Validation 250 (10%) + Test 250 (10%)
+**Dataset Split:**
+- Training 2,000 (80%)
+- Validation 250 (10%)
+- Test 250 (10%)
 
 **Metrics per Component:**
 - **Retrieval**: Recall@10, Precision@5, MRR, Framework match rate
@@ -332,35 +432,98 @@ style: |
 **Judge Model:** GPT-4 or Claude (fine-tuned on financial domain)
 
 **Evaluation Criteria (5-point scale):**
-1. Relevance 2. Accuracy 3. Completeness 4. Framework Adherence 5. Expert Voice
+1. Relevance
+2. Accuracy
+3. Completeness
+4. Framework Adherence
+5. Expert Voice
 
-**Continuous Evaluation:** Real-time for 10% of production queries, feedback loop, A/B testing
+</div>
+
+<div class="column">
+
+### Continuous Evaluation
+
+- Real-time for 10% of production queries
+- Feedback loop
+- A/B testing
 
 ### Domain Expertise Preservation Metrics
 
-**Framework Usage Rate** >75% | **Methodology Consistency** Agreement with history
-**Expert Reasoning Capture** Human evaluation | **Ontology Coverage** >90%
+**Framework Usage Rate** >75%
+**Methodology Consistency** Agreement with history
+**Expert Reasoning Capture** Human evaluation
+**Ontology Coverage** >90%
+
+</div>
+
+</div>
 
 ---
 
 ## 10. System Performance & Monitoring
 
+<div class="columns">
+
+<div class="column">
+
 ### Performance Characteristics
 
-**Latency:** Simple <3s, Complex <15s, Very Complex <45s (P95)
-**Throughput:** 100+ concurrent users, 10,000+ queries/day, 5x peak capacity
-**Accuracy:** Quality score >4.0/5.0, Hallucination <5%, Citation accuracy >95%
+**Latency:**
+- Simple <3s
+- Complex <15s
+- Very Complex <45s (P95)
+
+**Throughput:**
+- 100+ concurrent users
+- 10,000+ queries/day
+- 5x peak capacity
+
+**Accuracy:**
+- Quality score >4.0/5.0
+- Hallucination <5%
+- Citation accuracy >95%
 
 ### Monitoring & Observability
 
-**System Health:** API response times (P50/P95/P99), Error rates, Queue depth, KG query performance
-**Quality Metrics:** Hallucination detection rate, Confidence distribution, Citation coverage, User feedback
-**Business Metrics:** Query volume by type, User adoption, Answer quality trends, Framework usage
+**System Health:**
+- API response times (P50/P95/P99)
+- Error rates, Queue depth
+- KG query performance
+
+</div>
+
+<div class="column">
+
+**Quality Metrics:**
+- Hallucination detection rate
+- Confidence distribution
+- Citation coverage
+- User feedback
+
+**Business Metrics:**
+- Query volume by type
+- User adoption
+- Answer quality trends
+- Framework usage
 
 ### Failure Mode Detection & Recovery
 
-**Error Detection:** Low confidence → Flag, High hallucination spike → Alert, Retrieval failures → Fallback, Agent failures → Escalate
-**Recovery:** Automatic retry with backoff, Fallback to simpler methods, Human-in-the-loop escalation, Circuit breakers
+**Error Detection:**
+- Low confidence → Flag
+- High hallucination spike → Alert
+- Retrieval failures → Fallback
+- Agent failures → Escalate
+
+**Recovery:**
+- Automatic retry with backoff
+- Fallback to simpler methods
+- Human-in-the-loop escalation
+- Circuit breakers
+
+</div>
+
+</div>
 
 ---
 
@@ -428,6 +591,10 @@ style: |
 
 ## 14. Assumptions & Critical Questions
 
+<div class="columns">
+
+<div class="column">
+
 ### Key Assumptions (8)
 
 1. Data Quality: Corpus well-structured with metadata
@@ -439,6 +606,17 @@ style: |
 7. LLM Capabilities: Foundation models fine-tunable for financial domain
 8. Framework Stability: Analytical frameworks remain relatively stable
 
+### Key Risks & Mitigation
+
+**Hallucination** → Multi-stage guardrails
+**Loss of expert nuance** → Framework extraction
+**System complexity** → Phased implementation
+**Trust barriers** → Transparency & HITL
+
+</div>
+
+<div class="column">
+
 ### Critical Questions for Leadership
 
 1. What hallucination rate is acceptable for different use cases?
@@ -447,10 +625,9 @@ style: |
 4. What are compliance requirements for AI-generated client content?
 5. What is budget for ongoing human annotation and validation?
 
-### Key Risks & Mitigation
+</div>
 
-**Hallucination** → Multi-stage guardrails | **Loss of expert nuance** → Framework extraction
-**System complexity** → Phased implementation | **Trust barriers** → Transparency & HITL
+</div>
 
 ---
 
