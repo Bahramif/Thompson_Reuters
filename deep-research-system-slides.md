@@ -183,74 +183,80 @@ style: |
 
 ## 3. System Architecture Overview
 
-<div style="display: grid; grid-template-columns: 80px 1fr 80px; gap: 8px; height: 100%; align-items: stretch;">
+<div style="display: grid; grid-template-columns: 90px 1fr 90px; gap: 8px; height: 100%; align-items: stretch;">
 
-<!-- Left Sidebar: Organizational Enablement Layer -->
-<div style="background: #7b1fa2; border-radius: 6px; padding: 15px 8px; color: white; font-weight: bold; font-size: 14px; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; text-orientation: mixed;">
-<div>⬇️ Organizational<br>Enablement Layer</div>
+<!-- Left Sidebar: Quality Assurance & Governance -->
+<div style="background: #7b1fa2; border-radius: 6px; padding: 15px 8px; color: white; font-weight: bold; font-size: 13px; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; text-orientation: mixed;">
+<div>⬇️ Quality Assurance<br>& Governance</div>
 </div>
 
 <!-- Main Architecture Layers -->
 <div style="display: flex; flex-direction: column; gap: 6px; justify-content: space-between;">
 
-<!-- Layer 1: Application & Integration Layer (Blue) -->
+<!-- Layer 1: Document Ingestion & Processing (Blue) -->
 <div style="background: #e3f2fd; border: 2px solid #1976d2; border-radius: 6px; padding: 10px 15px; position: relative; display: flex; flex-direction: column; justify-content: center;">
-<div style="font-size: 18px; font-weight: bold; color: #1565c0; margin-bottom: 4px;">Application & Integration Layer</div>
-<div style="font-size: 14px; color: #424242; line-height: 1.3;">Require all applications to route feedback into a shared evaluation system, enabling longitudinal performance tracking.</div>
+<div style="font-size: 18px; font-weight: bold; color: #1565c0; margin-bottom: 4px;">Document Ingestion & Processing Layer</div>
+<div style="font-size: 14px; color: #424242; line-height: 1.3;">Ingest proprietary documents (research reports, due diligence, memos). Extract proprietary analytical frameworks, entities, relationships, and temporal metadata. Preserve expert reasoning patterns and framework versioning. Output: Structured knowledge ready for graph construction.</div>
 <div style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #1976d2; font-size: 18px;">⌄</div>
 </div>
 
-<!-- Layer 2: Validation, Evaluation & Observability Layer (Orange) -->
+<!-- Layer 2: Knowledge Graph Construction (Orange) -->
 <div style="background: #fff3e0; border: 2px solid #f57c00; border-radius: 6px; padding: 10px 15px; position: relative; display: flex; flex-direction: column; justify-content: center;">
-<div style="font-size: 18px; font-weight: bold; color: #e65100; margin-bottom: 4px;">Validation, Evaluation & Observability Layer</div>
-<div style="font-size: 14px; color: #424242; line-height: 1.3;">This layer is non-optional for enterprises — all production agentic systems should log and evaluate their outputs systematically. Governance can mandate standardized evaluation harnesses, trace schemas, and model variance tracking across teams. This is the critical layer for measuring, validating, and tracing nondeterministic outputs — the backbone of responsible agentic AI governance.</div>
+<div style="font-size: 18px; font-weight: bold; color: #e65100; margin-bottom: 4px;">Knowledge Graph Construction Layer</div>
+<div style="font-size: 14px; color: #424242; line-height: 1.3;">Build domain-specific knowledge graph preserving proprietary frameworks as first-class entities. Store entities (companies, instruments), relationships, framework definitions, temporal dimensions, and expert reasoning patterns. This is the critical layer for preserving and surfacing the firm's unique analytical methodology.</div>
 <div style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #f57c00; font-size: 18px;">⌄</div>
 </div>
 
-<!-- Layer 3: System Capability Layer (Green) -->
+<!-- Layer 3: Hybrid Retrieval System (Green) -->
 <div style="background: #e8f5e9; border: 2px solid #388e3c; border-radius: 6px; padding: 10px 15px; position: relative; display: flex; flex-direction: column; justify-content: center;">
-<div style="font-size: 18px; font-weight: bold; color: #2e7d32; margin-bottom: 4px;">System Capability Layer</div>
-<div style="font-size: 14px; color: #424242; line-height: 1.3;">Introduce agentic quality benchmarks and audit trails for tool use and intermediate agent reasoning.</div>
+<div style="font-size: 18px; font-weight: bold; color: #2e7d32; margin-bottom: 4px;">Hybrid Retrieval System Layer</div>
+<div style="font-size: 14px; color: #424242; line-height: 1.3;">Semantic search (50%), knowledge graph traversal (35%), and keyword matching (15%) work together to find framework-relevant content. Framework-aware retrieval prioritizes documents that use proprietary methodologies. Enables synthesis across multiple reports and time periods.</div>
 <div style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #388e3c; font-size: 18px;">⌄</div>
 </div>
 
-<!-- Layer 4: Middleware & Cognitive Architecture Layer (Teal/Light Green) -->
+<!-- Layer 4: Multi-Agent Query Processing (Teal) -->
 <div style="background: #e0f2f1; border: 2px solid #00897b; border-radius: 6px; padding: 10px 15px; position: relative; display: flex; flex-direction: column; justify-content: center;">
-<div style="font-size: 18px; font-weight: bold; color: #00695c; margin-bottom: 4px;">Middleware & Cognitive Architecture Layer</div>
-<div style="font-size: 14px; color: #424242; line-height: 1.3;">Require consistent traceability of agent decision paths and standardize frameworks for action logging and replayability.</div>
+<div style="font-size: 18px; font-weight: bold; color: #00695c; margin-bottom: 4px;">Multi-Agent Query Processing Layer</div>
+<div style="font-size: 14px; color: #424242; line-height: 1.3;">Specialized agents handle complex queries: Understanding (intent classification, ambiguity detection), Decomposition (break into sub-queries), Retrieval Orchestration (coordinate multi-modal search), Synthesis (apply framework reasoning), and QA (fact-checking). Handles ambiguous queries with proactive clarification.</div>
 <div style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #00897b; font-size: 18px;">⌄</div>
 </div>
 
-<!-- Layer 5: Foundation Model Layer (Purple) -->
+<!-- Layer 5: Framework-Aware Answer Generation (Purple) -->
 <div style="background: #f3e5f5; border: 2px solid #7b1fa2; border-radius: 6px; padding: 10px 15px; position: relative; display: flex; flex-direction: column; justify-content: center;">
-<div style="font-size: 18px; font-weight: bold; color: #6a1b9a; margin-bottom: 4px;">Foundation Model Layer</div>
-<div style="font-size: 14px; color: #424242; line-height: 1.3;">Define approved model providers, enforce consistent evaluation pipelines, and standardize prompt security and model selection policies.</div>
+<div style="font-size: 18px; font-weight: bold; color: #6a1b9a; margin-bottom: 4px;">Framework-Aware Answer Generation Layer</div>
+<div style="font-size: 14px; color: #424242; line-height: 1.3;">Generate answers maintaining analytical rigor and expert voice. Inject framework definitions into prompts, use framework-specific reasoning templates, maintain expert terminology. Provide structured output with citations, framework application, temporal context, and confidence assessment. Ensures consistent, trustworthy responses for client-facing work.</div>
 <div style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #7b1fa2; font-size: 18px;">⌄</div>
 </div>
 
-<!-- Layer 6: Core Infrastructure Layer (Dark Gray/Slate) -->
+<!-- Layer 6: Quality Assurance & Hallucination Mitigation (Dark Gray/Slate) -->
 <div style="background: #eceff1; border: 2px solid #546e7a; border-radius: 6px; padding: 10px 15px; position: relative; display: flex; flex-direction: column; justify-content: center;">
-<div style="font-size: 18px; font-weight: bold; color: #455a64; margin-bottom: 4px;">Core Infrastructure Layer</div>
-<div style="font-size: 14px; color: #424242; line-height: 1.3;">Data quality, access control, lineage tracing, and compliance logging form the foundation for all AI governance downstream.</div>
+<div style="font-size: 18px; font-weight: bold; color: #455a64; margin-bottom: 4px;">Quality Assurance & Hallucination Mitigation Layer</div>
+<div style="font-size: 14px; color: #424242; line-height: 1.3;">Multi-stage guardrails: pre-generation checks, during-generation grounding verification, post-generation fact-checking against knowledge graph. Leverage golden dataset (~2,500 Q&A pairs) for training detection models and benchmarking. Ensure accuracy and prevent fabricated information. Target hallucination rate <5%.</div>
 <div style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #546e7a; font-size: 18px;">⌄</div>
 </div>
 
+<!-- Layer 7: Evaluation & Monitoring Layer -->
+<div style="background: #f1f8e9; border: 2px solid #689f38; border-radius: 6px; padding: 10px 15px; position: relative; display: flex; flex-direction: column; justify-content: center;">
+<div style="font-size: 18px; font-weight: bold; color: #558b2f; margin-bottom: 4px;">Evaluation & Monitoring Layer</div>
+<div style="font-size: 14px; color: #424242; line-height: 1.3;">Comprehensive evaluation using golden dataset (offline) and LLM-as-judge (online). Measure framework preservation, domain expertise retention, answer quality, and system reliability. Continuous monitoring of performance metrics, failure mode detection, and feedback loops for improvement.</div>
 </div>
 
-<!-- Right Sidebar: Governance, Risk & Compliance Layer -->
-<div style="background: #d32f2f; border-radius: 6px; padding: 15px 8px; color: white; font-weight: bold; font-size: 14px; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; text-orientation: mixed;">
-<div>⬇️ Governance, Risk<br>& Compliance Layer</div>
+</div>
+
+<!-- Right Sidebar: Evaluation & Monitoring -->
+<div style="background: #d32f2f; border-radius: 6px; padding: 15px 8px; color: white; font-weight: bold; font-size: 13px; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; text-orientation: mixed;">
+<div>⬇️ Evaluation<br>& Monitoring</div>
 </div>
 
 </div>
 
 ### How Domain Expertise is Preserved
 
-**Framework Extraction & Storage:** Core Infrastructure layer extracts proprietary analytical frameworks, reasoning patterns, and methodology from documents, storing them in Knowledge Graph with version tracking.
+**Framework Extraction & Storage:** Document Processing layer extracts proprietary analytical frameworks, reasoning patterns, and methodology from documents, storing them in Knowledge Graph with version tracking.
 
-**Framework-Aware Processing:** All layers above Core Infrastructure are framework-aware—retrieval prioritizes framework-relevant content, generation uses framework templates, and QA validates framework adherence.
+**Framework-Aware Processing:** All layers are framework-aware—retrieval prioritizes framework-relevant content, generation uses framework templates, and QA validates framework adherence.
 
-**Expert Reasoning Patterns:** Middleware layer captures and enforces expert decision paths, while Validation layer continuously measures framework usage against golden dataset benchmarks.
+**Expert Reasoning Patterns:** Multi-Agent layer captures and enforces expert decision paths, while Evaluation layer continuously measures framework usage against golden dataset benchmarks.
 
 ---
 
