@@ -86,6 +86,10 @@ style: |
 
 ## 1. Problem Framing & Understanding
 
+<div class="columns">
+
+<div class="column">
+
 ### The Challenge
 
 📊 **Problem**: Senior analysts spend **35-40%** of time re-discovering existing insights
@@ -103,6 +107,34 @@ style: |
 3. ✅ Handle ambiguous queries with proactive clarification
 4. ✅ Deliver accurate, well-sourced answers maintaining expert rigor
 5. ✅ Provide consistent, trustworthy responses for client-facing work
+
+</div>
+
+<div class="column">
+
+### Capability Self-Assessment
+
+**Strengths:**
+- System architecture & design
+- Evaluation framework design
+- Quality assurance strategies
+- Multi-agent system coordination
+
+**Areas for Growth:**
+- Deep financial domain expertise (will rely on analysts)
+- Regulatory compliance nuances (will consult legal)
+- Firm-specific framework knowledge (will learn from corpus)
+
+### What Would Change My Approach?
+
+- Different acceptable hallucination thresholds
+- Regulatory constraints on AI-generated content
+- Golden dataset quality/coverage gaps
+- Infrastructure limitations
+
+</div>
+
+</div>
 
 ---
 
@@ -212,6 +244,14 @@ style: |
 
 </div>
 
+### How Domain Expertise is Preserved
+
+**Framework Extraction & Storage:** Core Infrastructure layer extracts proprietary analytical frameworks, reasoning patterns, and methodology from documents, storing them in Knowledge Graph with version tracking.
+
+**Framework-Aware Processing:** All layers above Core Infrastructure are framework-aware—retrieval prioritizes framework-relevant content, generation uses framework templates, and QA validates framework adherence.
+
+**Expert Reasoning Patterns:** Middleware layer captures and enforces expert decision paths, while Validation layer continuously measures framework usage against golden dataset benchmarks.
+
 ---
 
 ## 4. Document Processing & Knowledge Extraction
@@ -260,7 +300,65 @@ style: |
 
 ---
 
-## 5. Information Retrieval System Design
+## 5. Domain-Specific Ontology Capture
+
+<div class="columns">
+
+<div class="column">
+
+### How Domain Expertise is Captured
+
+**Proprietary Framework Representation:**
+- Framework name, version, and evolution history
+- Input parameters (market conditions, risk factors)
+- Decision logic and reasoning patterns
+- Expected outputs and confidence calibration
+
+**Entity Types:**
+- Companies (industry, geography, market cap)
+- Financial Instruments (equity, debt, derivatives)
+- Markets & Sectors
+- Analysts (with expertise areas)
+- Frameworks (proprietary analytical methods)
+
+**Relationship Types:**
+- `analyzes` (analyst → company/instrument)
+- `applies_framework` (analysis → framework)
+- `influences` (factor → company/outcome)
+- `temporal_evolution` (view → historical_view)
+- `contradicts` (analysis → analysis)
+
+</div>
+
+<div class="column">
+
+### Distinguishing Generic vs. Proprietary
+
+**Generic Financial Information:**
+- Market data, stock prices
+- Standard financial metrics
+- Public company information
+
+**Firm's Unique Perspective:**
+- Proprietary analytical frameworks
+- Expert reasoning patterns
+- Framework-specific evaluation criteria
+- Historical prediction accuracy
+- Confidence calibration methods
+
+**Ontology Metrics:**
+- Coverage: % of domain concepts captured (>90%)
+- Completeness: Avg relationships per entity (>3)
+- Accuracy: Human validation (>95%)
+- Framework Representation: % of known frameworks captured (>85%)
+
+</div>
+
+</div>
+
+---
+
+## 6. Information Retrieval System Design
 
 ### Hybrid Retrieval Architecture
 
@@ -391,11 +489,21 @@ style: |
 
 <div class="column">
 
-### Golden Dataset & Metrics
+### Leveraging Golden Dataset (~2,500 Q&A Pairs)
 
-**Training & Evaluation:**
-- Fine-tune on golden Q&A pairs, learn patterns, calibrate thresholds
+**Training:**
+- Fine-tune hallucination detection models on golden Q&A pairs
+- Learn patterns of correct vs. hallucinated answers
+- Calibrate confidence thresholds based on expert-curated examples
+- Extract framework application patterns from expert answers
 
+**Evaluation:**
+- Benchmark hallucination rate on golden set (target: <5%)
+- Track false positive/negative rates for detection models
+- Continuously improve detection accuracy
+- Use for continuous model refinement
+
+**Metrics:**
 | Metric | Target |
 |--------|--------|
 | Hallucination Rate | <5% |
@@ -540,7 +648,55 @@ style: |
 
 ---
 
-## 12. Complex Query Examples
+## 12. Uncertainty & Experiments
+
+<div class="columns">
+
+<div class="column">
+
+### What We're Genuinely Uncertain About
+
+1. **Framework Extraction Accuracy**: Will automated extraction capture all nuances of proprietary frameworks?
+   - *Experiment*: Manual validation of 100 framework extractions vs. automated
+
+2. **Hallucination Detection Precision**: Can we achieve <5% hallucination rate consistently?
+   - *Experiment*: A/B test different detection thresholds on golden set
+
+3. **User Trust Adoption**: Will analysts trust system enough for client-facing work?
+   - *Experiment*: Pilot with 5 analysts, measure trust scores over time
+
+4. **Temporal Reasoning Accuracy**: Can system accurately handle time-evolving views?
+   - *Experiment*: Test on 50 temporal queries from golden set
+
+</div>
+
+<div class="column">
+
+### What We'll Test First
+
+1. **Retrieval Effectiveness**: Evaluate retrieval metrics on golden set split
+2. **Framework Extraction**: Validate extraction accuracy on known frameworks
+3. **Answer Quality**: LLM-as-judge evaluation on sample queries
+4. **Hallucination Rate**: Measure on golden set before production
+
+### Where We Expect to Be Wrong
+
+1. **Initial Hallucination Rate**: Likely higher (~10-15%) before tuning
+2. **Framework Coverage**: May only capture 60-70% initially, needs iteration
+3. **User Adoption**: Trust building may take longer than expected
+4. **Query Latency**: Complex queries may exceed targets initially
+
+</div>
+
+</div>
+
+---
+
+## 13. Complex Query Examples
+
+<div class="columns">
+
+<div class="column">
 
 ### Example 1: Exploratory Query
 **Query:** *"What do we know about renewable energy investments in Southeast Asia?"*
@@ -557,15 +713,31 @@ style: |
 - Graph traversal: framework → region → risk assessment
 - Output: Framework definition + historical examples + evolution timeline
 
-### Example 3: Ambiguous Query
+</div>
+
+<div class="column">
+
+### Example 3: Temporal Query
+**Query:** *"How has our view on interest rate sensitivity evolved from 2020 to 2024?"*
+- Temporal query identified with date range filter
+- Retrieval with time filters (2020-2024)
+- Graph query finds interest_rate → analysis → company relationships over time
+- Synthesis compares views across time periods
+- Output: Evolution narrative with date-specific citations and reasoning changes
+
+### Example 4: Ambiguous Query
 **Query:** *"Tell me about the European market"*
 - Ambiguity detected (which market? what time period? what aspect?)
 - Clarification generated: *"Which European market? (Equity, Fixed Income, Credit, etc.) What time period? What specific aspect?"*
 - System waits for clarification before proceeding
 
+</div>
+
+</div>
+
 ---
 
-## 13. Implementation Roadmap
+## 14. Implementation Roadmap
 
 ### Phase 1: Foundation (Months 1-3)
 **Deliverable:** MVP with basic query answering
@@ -589,7 +761,7 @@ style: |
 
 ---
 
-## 14. Assumptions & Critical Questions
+## 15. Assumptions & Critical Questions
 
 <div class="columns">
 
@@ -631,7 +803,57 @@ style: |
 
 ---
 
-## 15. Conclusion & Next Steps
+## 15. Data Governance & Security
+
+<div class="columns">
+
+<div class="column">
+
+### Data Governance
+
+**Access Control:**
+- Role-based access (analyst, senior analyst, admin)
+- Document-level permissions
+- Query logging and audit trails
+
+**Versioning:**
+- Document version tracking
+- Framework version management
+- Knowledge graph change logs
+
+**Compliance:**
+- Financial services regulations (SEC, FINRA)
+- Data retention policies
+- Right to be forgotten
+
+</div>
+
+<div class="column">
+
+### Security Measures
+
+**Data Protection:**
+- Encryption at rest and in transit
+- Secure API endpoints (OAuth 2.0)
+- PII detection and masking
+
+**System Security:**
+- Regular security audits
+- Vulnerability scanning
+- Incident response procedures
+
+**Privacy:**
+- Query anonymization for evaluation
+- User data protection
+- Audit trail compliance
+
+</div>
+
+</div>
+
+---
+
+## 16. Conclusion & Next Steps
 
 ### Key Design Principles
 
